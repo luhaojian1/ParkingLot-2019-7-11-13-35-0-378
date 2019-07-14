@@ -5,6 +5,9 @@ import com.thoughtworks.tdd.parklot.Car;
 import com.thoughtworks.tdd.parklot.CarTicket;
 import com.thoughtworks.tdd.parklot.ParkingLot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
@@ -32,4 +35,35 @@ public class ParkingLotTest {
         //then
         assertNotNull(parkingLot.pickUpCar(carTicket));
     }
+
+    @Test
+    public void should_return_3_carTickets_when_parkCar_given_3_cars() {
+        List<CarTicket> carTickets = new ArrayList<>();
+        parkingLot = new ParkingLot();
+        for (int i = 0; i < 3; i++) {
+            //given
+            Car car = new Car();
+            //when
+            carTickets.add(parkingLot.parkCar(car));
+        }
+        //then
+        assertEquals(carTickets.size(), 3);
+    }
+
+    @Test
+    public void should_return_2_cars_when_pickUpCar_given_2_carTickets() {
+        List<Car> cars = new ArrayList<>();
+        parkingLot = new ParkingLot();
+        //given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        CarTicket ticket1 = parkingLot.parkCar(car1);
+        CarTicket ticket2 = parkingLot.parkCar(car2);
+        //when
+        cars.add(parkingLot.pickUpCar(ticket1));
+        cars.add(parkingLot.pickUpCar(ticket2));
+        //then
+        assertEquals(cars.size(), 2);
+    }
+
 }

@@ -11,7 +11,7 @@ public class ParkingBoyTest {
     private ParkingLot parkingLot;
 
     @Test
-    public void should_renturn_error_message_when_takeCar_given_error_carTicket() {
+    public void should_return_error_message_when_takeCar_given_error_carTicket() {
         parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         //given
@@ -23,7 +23,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void should_renturn_error_message_when_takeCar_given_no_carTicket() {
+    public void should_return_error_message_when_takeCar_given_no_carTicket() {
         parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         //given
@@ -35,7 +35,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void should_renturn_error_message_when_parkingCar_given_fullCapacity() {
+    public void should_return_error_message_when_parkingCar_given_fullCapacity() {
         parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         //given
@@ -49,7 +49,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void should_renturn_park_car_success_when_parkingCar_given_fullCapacity_in_first_parkingLot_and_park_to_the_second_parkLot() {
+    public void should_return_park_car_success_when_parkingCar_given_fullCapacity_in_first_parkingLot_and_park_to_the_second_parkLot() {
         ParkingLot parkingLot1 = new ParkingLot();
         ParkingLot parkingLot2 = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy();

@@ -78,4 +78,17 @@ public class ParkingLotTest {
         assertNull(errorTicketCar);
     }
 
+    @Test
+    public void should_return_null_when_pickUpCar_given_have_used_carTicket() {
+
+        parkingLot = new ParkingLot();
+        //given
+        CarTicket usedTicket = new CarTicket();
+        usedTicket.setUsed(true);
+        //when
+        Car errorTicketCar = parkingLot.pickUpCar(usedTicket);
+        //then
+        assertNull(errorTicketCar);
+    }
+
 }

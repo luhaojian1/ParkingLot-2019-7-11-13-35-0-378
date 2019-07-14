@@ -14,7 +14,8 @@ public class ParkingLot {
     }
 
     public Car pickUpCar(CarTicket carTicket) {
-        if (parkRecords.containsKey(carTicket)) {
+        boolean isValidCarTicket = parkRecords.containsKey(carTicket) && !carTicket.isUsed();
+        if (isValidCarTicket) {
             return parkRecords.get(carTicket);
         }
         return null;

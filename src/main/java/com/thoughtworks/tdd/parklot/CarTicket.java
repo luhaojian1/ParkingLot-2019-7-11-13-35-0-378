@@ -3,14 +3,18 @@ package com.thoughtworks.tdd.parklot;
 import com.thoughtworks.tdd.person.Customer;
 
 public class CarTicket {
-    private Car car;
-    private Customer customer;
+    private String id;
+    private boolean isUsed;
 
-    public Car getCar() {
-        return car;
+    public CarTicket(){
+        isUsed = false;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public boolean isUsed() {
+        return isUsed;
+    }
+
+    public void setUsed(boolean used) {
+        isUsed = used;
     }
 }

@@ -47,4 +47,19 @@ public class ParkingBoyTest {
         //then
         assertEquals(carTicket.getParkCarMessage(), "Not enough position.");
     }
+
+    @Test
+    public void should_renturn_park_car_success_when_parkingCar_given_fullCapacity_in_first_parkingLot_and_park_to_the_second_parkLot() {
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy();
+        //given
+        parkingLot1.setIsFull(true);
+        parkingBoy.setParkingLots(parkingLot1);
+        parkingBoy.setParkingLots(parkingLot2);
+        //when
+        CarTicket carTicket = parkingBoy.parkingCar(new Car());
+        //then
+        assertEquals(carTicket.getParkCarMessage(), "park car success.");
+    }
 }

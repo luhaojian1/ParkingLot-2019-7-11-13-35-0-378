@@ -6,14 +6,19 @@ import java.util.Map;
 public class ParkingLot {
 
     private final int capacity = 10;
+    private boolean isFull = false;
     private Map<CarTicket, Car> parkRecords = new HashMap<>();
 
     public CarTicket parkCar(Car car) {
-        if (parkRecords.size() >= capacity){
+        if (isFull){
+            System.out.println(isFull);
             return null;
         }
         CarTicket carTicket = new CarTicket();
         parkRecords.put(carTicket, car);
+        if (parkRecords.size() >= 10){
+            isFull = true;
+        }
         return carTicket;
     }
 
@@ -24,7 +29,18 @@ public class ParkingLot {
             parkRecords.remove(carTicket);
             return car;
         }
-
         return null;
+    }
+
+    public boolean isFull() {
+        return isFull;
+    }
+
+    public void setIsFull(boolean isFull) {
+        this.isFull = isFull;
+    }
+
+    public Map<CarTicket, Car> getParkRecords() {
+        return parkRecords;
     }
 }

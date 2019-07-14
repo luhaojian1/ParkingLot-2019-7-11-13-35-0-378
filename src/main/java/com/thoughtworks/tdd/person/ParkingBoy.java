@@ -14,19 +14,29 @@ public class ParkingBoy extends Person {
         this.parkingLot = parkingLot;
     }
 
+    public CarTicket parkingCar(Car car) {
+        CarTicket carTicket = parkingLot.parkCar(car);
+        if (carTicket == null) {
+            carTicket = new CarTicket();
+            carTicket.setParkCarMessage("Not enough position.");
+        }
+       else{
+           carTicket.setParkCarMessage("park car success");
+        }
+        return carTicket;
+    }
+
     public Car takeCar(CarTicket carTicket) {
         Car car;
-        if (carTicket == null){
+        if (carTicket == null) {
             car = new Car();
             car.setCarMessage("Please provide your parking ticket.");
-        }
-        else{
+        } else {
             car = parkingLot.pickUpCar(carTicket);
             if (car == null) {
                 car = new Car();
                 car.setCarMessage("Unrecognized parking ticket.");
-            }
-            else {
+            } else {
                 car.setCarMessage("pick up car success.");
             }
         }

@@ -33,4 +33,18 @@ public class ParkingBoyTest {
         //then
         assertEquals(car.getCarMessage(), "Please provide your parking ticket.");
     }
+
+    @Test
+    public void should_renturn_error_message_when_parkingCar_given_fullCapacity() {
+        parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        //given
+        for (int i = 0; i < 10; i++){
+            parkingBoy.parkingCar(new Car());
+        }
+        //when
+        CarTicket carTicket = parkingBoy.parkingCar(new Car());
+        //then
+        assertEquals(carTicket.getParkCarMessage(), "Not enough position.");
+    }
 }

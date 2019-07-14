@@ -1,7 +1,5 @@
 package com.thoughtworks.tdd.parklot;
 
-import com.thoughtworks.tdd.person.Customer;
-
 public class CarTicket {
     private String id;
     private boolean isUsed;

@@ -91,4 +91,18 @@ public class ParkingLotTest {
         assertNull(errorTicketCar);
     }
 
+    @Test
+    public void should_return_null_when_parkCar_given_fullCapacity() {
+
+        parkingLot = new ParkingLot();
+        //given
+        for (int i = 0; i < 10; i++){
+            parkingLot.parkCar(new Car());
+        }
+        //when
+        CarTicket ticket = parkingLot.parkCar(new Car());
+        //then
+        assertNull(ticket);
+    }
+
 }

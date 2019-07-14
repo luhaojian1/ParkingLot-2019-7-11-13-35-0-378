@@ -96,20 +96,24 @@ public class ManagerTest {
         parkingBoy.addParkingLots(parkingLots);
         smartParkingBoy.addParkingLots(parkingLots);
         superSmartParkingBoy.addParkingLots(parkingLots);
+        manager.addParkingLots(parkingLots);
         //given
         parkingLot1.setIsFull(true);
         CarTicket carTicket = new CarTicket();
         carTicket.setUsed(true);
         CarTicket smartBoyCarTicket = null;
         CarTicket superSmartBoyCarTicket = superSmartParkingBoy.parkingCar(new Car());
+        CarTicket managerCarTicket = manager.parkingCar(new Car());
         //when
-        Car car = manager.pointParkingBoyToTakeCar(carTicket,parkingBoy);
-        Car smartCar = manager.pointParkingBoyToTakeCar(smartBoyCarTicket,smartParkingBoy);
-        Car superSmartCar = manager.pointParkingBoyToTakeCar(superSmartBoyCarTicket,superSmartParkingBoy);
+        Car car = manager.pointParkingBoyToTakeCar(carTicket, parkingBoy);
+        Car smartCar = manager.pointParkingBoyToTakeCar(smartBoyCarTicket, smartParkingBoy);
+        Car superSmartCar = manager.pointParkingBoyToTakeCar(superSmartBoyCarTicket, superSmartParkingBoy);
+        Car managerCar = manager.takeCar(managerCarTicket);
         //then
         assertEquals(car.getCarMessage(), "Unrecognized parking ticket.");
         assertEquals(smartCar.getCarMessage(), "Please provide your parking ticket.");
         assertEquals(superSmartCar.getCarMessage(), "pick up car success.");
+        assertEquals(managerCar.getCarMessage(), "pick up car success.");
 
     }
 

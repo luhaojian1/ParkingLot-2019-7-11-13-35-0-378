@@ -66,4 +66,16 @@ public class ParkingLotTest {
         assertEquals(cars.size(), 2);
     }
 
+    @Test
+    public void should_return_null_when_pickUpCar_given_error_carTicket() {
+
+        parkingLot = new ParkingLot();
+        //given
+        CarTicket errorTicket = new CarTicket();
+        //when
+        Car errorTicketCar = parkingLot.pickUpCar(errorTicket);
+        //then
+        assertNull(errorTicketCar);
+    }
+
 }

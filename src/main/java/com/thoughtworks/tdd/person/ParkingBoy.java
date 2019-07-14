@@ -15,13 +15,20 @@ public class ParkingBoy extends Person {
     }
 
     public Car takeCar(CarTicket carTicket) {
-        Car car = parkingLot.pickUpCar(carTicket);
-        if (car == null) {
+        Car car;
+        if (carTicket == null){
             car = new Car();
-            car.setCarMessage("未识别的停车罚单");
+            car.setCarMessage("Please provide your parking ticket.");
         }
-        else {
-            car.setCarMessage("成功取车");
+        else{
+            car = parkingLot.pickUpCar(carTicket);
+            if (car == null) {
+                car = new Car();
+                car.setCarMessage("Unrecognized parking ticket.");
+            }
+            else {
+                car.setCarMessage("pick up car success.");
+            }
         }
         return car;
     }

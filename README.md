@@ -1,83 +1,60 @@
-# CLI Version
+# FizzBuzz
 
-- Please read the story and do your implementation. You can fork the following github repository as starting point  
-- Please submit your own github repository address in the answer field.
+## 需求说明
 
-## Practice Requirement
-
-		
-1. Please go through all the ACs with your partner and make sure that you are on the same page.  (Tips: we recommend to go through the ACs for one story at a time if it is feasible) .
-2. You should follow the TDD process to implement the requirements independently. Then push your code to your own Github repository. Here are some additional hints:
- - Please commit in small steps ( one commit per successful unit-test).
- - Please submit the address of your Github repository to the learning platform.
-3. If you have any question, please feel free to ask in the wechat group.
+  你是一名体育老师，在某次课距离下课还有五分钟时，你决定搞一个游戏。此时有120名学生在上课。游戏的规则是： 
 
 
-## Story 1
+1. 让所有学生拍成一队，然后按顺序报数。
+2. 学生报数时，如果所报数字是第一个特殊数（3）的倍数，那么不能说该数字，而要说Fizz；如果所报数字是第二个特殊数（5）的倍数，那么要说Buzz；如果所报数字是第三个特殊数（7）的倍数，那么要说Whizz。 
+3. 学生报数时，如果所报数字同时是两个特殊数的倍数情况下，也要特殊处理，比如第一个特殊数和第二个特殊数的倍数，那么不能说该数字，而是要说FizzBuzz, 以此类推。如果同时是三个特殊数的倍数，那么要说FizzBuzzWhizz。
+  
+现在，我们需要你完成一个程序来模拟这个游戏，他的输出应该是输出（片段）：
 
-As a customer, I would like to give my car to a parking boy so that he can help me park and fetch it.
+```
+1
+2
+Fizz
+4
+Buzz
+Fizz
+Whizz
+8
+Fizz
+Buzz
+11
+Fizz 
+Fizz
+Whizz
+FizzBuzz
+16
+17
+Fizz
+19
+Buzz 
+… 
+一直到120 
+```
 
-AC1: The parking boy can park a car into the parking lot and returns a parking ticket. The customer can give the parking ticket back to the parking boy to fetch the car.
+你只需要实现核心逻辑就可以了。假设最外面已经有一个循环，比如：
+ 
+```
+for( int i = 0; i < 120; i++) {
+    String result = fizzBuzz(i+1);
+    System.out.println(result);
+}
+```  
 
-AC2: The parking boy can park multiple cars into the parking lot. And can fetch right car using correspond ticket.
+你只需要实现里面的fizzBuzz函数，用TDD的方式。
 
-AC3: If the customer gives a wrong ticket (the parking boy did not provide the ticket) or does not give a ticket. Then no car should be fetched.
+## 使用方法
 
-AC4: If the customer gives a ticket that has already been used. Then no car should be fetched.
+- 将该项目Fork到自己的仓库；
+- Clone到自己的本地电脑上；
+- fork本仓库技术栈的代码
+- 将作业提交到github，把github地址提交回系统
 
-AC5: The parking lot has a capacity (the default capacity of a parking lot is 10). If there is no position, then the user cannot park the car into it. Thus (s)he will not get any ticket.
+## 已存在代码说明
 
-> There are some cases which are not a requirement but may happen technically 
->
-> * Passing a parked car to a parking boy.
-> * Passing a `null` car to a parking boy.
-
-## Story 2
-
-As a customer, I would like to get some response message from the parking boy when I cannot fetch the car. So that I can know what happens.
-
-AC1: When the customer gives a wrong ticket (the parking boy does not provide the ticket / the ticket has been used). Then no car should be fetched. If I query the error message, I can get an "Unrecognized parking ticket.".
-
-AC2: When the customer does not provide a ticket when fetching a  car. The error message should be "Please provide your parking ticket."
-
-AC3: When the parking boy attempt to park a car into a parking lot without a position. The error message should be "Not enough position."
-
-## Story 3
-
-As a parking lots service manager, I would like to have a parking boy parking cars to multiple parking lots. So that I can provide more parking positions.
-
-AC1. The parking boy is not that clever, and he will always park cars sequentially (suppose that there are two parking lots managed by the parking boy. The parking boy will park cars to the second parking lot when the first parking lot is full).
-
-AC2: All the requirement in *Story 1* and *Story 2* **MUST** be satisfied.
-
-## Story 4
-
-As a parking lots service manager. I would like to have another kind of parking boy to help me parking cars to multiple parking lots. So that the parking positions can be better used.
-
-The new kind of parking boy is called **SMART PARKING BOY**.
-
-AC1. The smart parking boy will always park cars to the parking lot which contains more empty positions.
-
-AC2: All the requirement in *Story 1* and *Story 2* **MUST** be satisfied.
-
-## Story 5
-
-As a parking lots service manager, I would like to have another kind of parking boy to help me parking cars to multiple parking lots so that the parking positions can be better used.
-
-The new kind of parking boy is called **SUPER SMART PARKING BOY**.
-
-AC1. The super smart parking boy will always park cars to the parking lot which has a larger available position rate (*positions available* / *total capacity*).
-
-AC2: All the requirement in *Story 1* and *Story 2* **MUST** be satisfied.
-
-## Story 6
-
-As a parking lot service manager, I would like to manage several parking boys (including all three kinds of parking boys). And at the same time, I can act as a standard parking boy too. So that our work can be most efficient.
-
-Each parking lot service will have only one manager.
-
-AC1. The parking lot service manager can add parking boys to management list. And the parking lot manager can specify a parking boy on the list to park or fetch the car (only from the parking lots managed by that parking boy).
-
-AC2. The parking lot service manager can also manage parking lots. And (s)he can park or fetch the car just as a standard parking boy (*Story 3*). Note that (s)he can only store and fetch the car from his/her own parking lots.
-
-AC3. If the manager tells the parking boy to park or fetch the car, then the manager should be able to display the error message to the customer if the parking boy failed to do the operation.
+已经存在的代码主要讲解如何使用测试,我们看到HelloWorldTest下有两个测试,第一个测试演示了如何进行集成测试和使用Assert。
+第二个测试演示了如何进行mock。

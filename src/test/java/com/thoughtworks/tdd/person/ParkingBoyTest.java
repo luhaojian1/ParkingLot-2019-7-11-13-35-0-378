@@ -5,7 +5,7 @@ import com.thoughtworks.tdd.parklot.CarTicket;
 import com.thoughtworks.tdd.parklot.ParkingLot;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ParkingBoyTest {
     private ParkingLot parkingLot;
@@ -39,7 +39,7 @@ public class ParkingBoyTest {
         parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         //given
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             parkingBoy.parkingCar(new Car());
         }
         //when

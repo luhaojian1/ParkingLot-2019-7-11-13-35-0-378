@@ -16,7 +16,7 @@ public class SmartParkingBoyTest {
         ParkingLot parkingLot3 = new ParkingLot();
         ParkingBoy parkingBoy = new SmartParkingBoy();
         //given
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
             parkingLot1.parkCar(new Car());
             parkingLot3.parkCar(new Car());
         }
@@ -30,6 +30,6 @@ public class SmartParkingBoyTest {
         int parkingLot3Length = parkingLot3.getParkRecords().size();
         //then
         assertEquals(carTicket.getParkCarMessage(), "park car success.");
-        assertEquals(parkingLot3Length,5);
+        assertEquals(parkingLot3Length, 5);
     }
 }

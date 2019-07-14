@@ -5,11 +5,9 @@ import com.thoughtworks.tdd.parklot.CarTicket;
 import com.thoughtworks.tdd.parklot.ParkingLot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class ParkingBoy extends Person {
+public class ParkingBoy {
     private List<ParkingLot> parkingLots;
 
     public ParkingBoy() {
@@ -67,5 +65,9 @@ public class ParkingBoy extends Person {
 
     public void setParkingLots(ParkingLot parkingLot) {
         parkingLots.add(parkingLot);
+    }
+
+    public void addParkingLots(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
     }
 }

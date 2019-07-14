@@ -3,9 +3,7 @@ package com.thoughtworks.tdd.person;
 import com.thoughtworks.tdd.parklot.Car;
 import com.thoughtworks.tdd.parklot.CarTicket;
 import com.thoughtworks.tdd.parklot.ParkingLot;
-import org.omg.IOP.TAG_RMI_CUSTOM_MAX_STREAM_FORMAT;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,13 +18,13 @@ public class SmartParkingBoy extends ParkingBoy {
         if (!parkingLots.isEmpty()) {
             ParkingLot targetParkingLot = null;
             for (ParkingLot parkingLot : parkingLots) {
-                int length = parkingLot.getCapacity()-parkingLot.getParkRecords().size();
+                int length = parkingLot.getCapacity() - parkingLot.getParkRecords().size();
                 if (maxLength <= length) {
                     maxLength = length;
                     targetParkingLot = parkingLot;
                 }
             }
-            carTicket =targetParkingLot.parkCar(car);
+            carTicket = targetParkingLot.parkCar(car);
             carTicket.setParkCarMessage("park car success.");
             return carTicket;
         }

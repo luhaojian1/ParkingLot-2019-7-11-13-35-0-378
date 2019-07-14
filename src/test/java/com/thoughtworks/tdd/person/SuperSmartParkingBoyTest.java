@@ -15,7 +15,7 @@ public class SuperSmartParkingBoyTest {
         ParkingLot parkingLot3 = new ParkingLot();
         ParkingBoy parkingBoy = new SuperSmartParkingBoy();
         //given
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
             parkingLot1.parkCar(new Car());
             parkingLot3.parkCar(new Car());
         }
@@ -29,6 +29,6 @@ public class SuperSmartParkingBoyTest {
         int parkingLot1Length = parkingLot1.getParkRecords().size();
         //then
         assertEquals(carTicket.getParkCarMessage(), "park car success.");
-        assertEquals(parkingLot1Length,6);
+        assertEquals(parkingLot1Length, 6);
     }
 }

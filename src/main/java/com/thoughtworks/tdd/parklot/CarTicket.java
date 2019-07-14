@@ -4,7 +4,8 @@ public class CarTicket {
     private String id;
     private boolean isUsed;
     private String parkCarMessage;
-    public CarTicket(){
+
+    public CarTicket() {
         isUsed = false;
     }
 

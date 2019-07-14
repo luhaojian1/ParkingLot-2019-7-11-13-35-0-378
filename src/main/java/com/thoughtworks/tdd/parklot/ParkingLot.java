@@ -18,19 +18,19 @@ public class ParkingLot {
     }
 
     public CarTicket parkCar(Car car) {
-        if (isFull){
+        if (isFull) {
             return null;
         }
         CarTicket carTicket = new CarTicket();
         parkRecords.put(carTicket, car);
-        if (parkRecords.size() >= capacity){
+        if (parkRecords.size() >= capacity) {
             isFull = true;
         }
         return carTicket;
     }
 
     public Car pickUpCar(CarTicket carTicket) {
-        boolean isValidCarTicket =parkRecords.containsKey(carTicket) && !carTicket.isUsed();
+        boolean isValidCarTicket = parkRecords.containsKey(carTicket) && !carTicket.isUsed();
         if (isValidCarTicket) {
             Car car = parkRecords.get(carTicket);
             parkRecords.remove(carTicket);

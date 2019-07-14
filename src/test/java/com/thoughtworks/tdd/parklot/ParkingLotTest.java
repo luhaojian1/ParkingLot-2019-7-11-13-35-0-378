@@ -1,9 +1,6 @@
 package com.thoughtworks.tdd.parklot;
 
 import org.junit.jupiter.api.Test;
-import com.thoughtworks.tdd.parklot.Car;
-import com.thoughtworks.tdd.parklot.CarTicket;
-import com.thoughtworks.tdd.parklot.ParkingLot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +90,7 @@ public class ParkingLotTest {
     public void should_return_null_when_parkCar_given_fullCapacity() {
         parkingLot = new ParkingLot();
         //given
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             parkingLot.parkCar(new Car());
         }
         //when

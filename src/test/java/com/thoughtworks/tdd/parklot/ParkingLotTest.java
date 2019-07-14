@@ -1,4 +1,4 @@
-package com.thoughtworks.tdd;
+package com.thoughtworks.tdd.parklot;
 
 import org.junit.jupiter.api.Test;
 import com.thoughtworks.tdd.parklot.Car;
@@ -68,7 +68,6 @@ public class ParkingLotTest {
 
     @Test
     public void should_return_null_when_pickUpCar_given_error_carTicket() {
-
         parkingLot = new ParkingLot();
         //given
         CarTicket errorTicket = new CarTicket();
@@ -80,7 +79,6 @@ public class ParkingLotTest {
 
     @Test
     public void should_return_null_when_pickUpCar_given_have_used_carTicket() {
-
         parkingLot = new ParkingLot();
         //given
         CarTicket usedTicket = new CarTicket();
@@ -93,7 +91,6 @@ public class ParkingLotTest {
 
     @Test
     public void should_return_null_when_parkCar_given_fullCapacity() {
-
         parkingLot = new ParkingLot();
         //given
         for (int i = 0; i < 10; i++){
@@ -104,5 +101,6 @@ public class ParkingLotTest {
         //then
         assertNull(ticket);
     }
+
 
 }

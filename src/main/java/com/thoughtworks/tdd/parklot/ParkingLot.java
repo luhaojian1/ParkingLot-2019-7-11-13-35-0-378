@@ -24,6 +24,7 @@ public class ParkingLot {
             parkRecords.remove(carTicket);
             return car;
         }
+
         return null;
     }
 }

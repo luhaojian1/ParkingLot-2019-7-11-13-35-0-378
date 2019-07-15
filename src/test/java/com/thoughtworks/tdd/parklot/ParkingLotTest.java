@@ -48,13 +48,13 @@ public class ParkingLotTest {
     @Test
     public void should_return_null_when_takeCar_given_have_used_carTicket() {
         parkingLot = new ParkingLot();
-        //given
-        CarTicket usedTicket = new CarTicket();
+        CarTicket carTicket = parkingLot.parkCar(new Car());
 
         //when
-        Car errorTicketCar = parkingLot.takeCar(usedTicket);
+        parkingLot.takeCar(carTicket);
+        Car car2 = parkingLot.takeCar(carTicket);
         //then
-        assertNull(errorTicketCar);
+        assertNull(car2);
     }
 
     @Test

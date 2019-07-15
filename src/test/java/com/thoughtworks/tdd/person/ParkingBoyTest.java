@@ -8,8 +8,7 @@ import com.thoughtworks.tdd.parklot.CarTicket;
 import com.thoughtworks.tdd.parklot.ParkingLot;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingBoyTest {
     private ParkingLot parkingLot;
@@ -38,24 +37,24 @@ public class ParkingBoyTest {
     public void should_throw_NotEnoughPositionException_when_parkCar_given_fullCapacity() {
         parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        CarTicket carTicket = parkingBoy.parkCar(new Car());
+        parkingBoy.parkCar(new Car());
 
         assertThrows(NotEnoughPositionException.class, () -> parkingBoy.parkCar(new Car()));
 
     }
 
     @Test
-    public void should_return_park_car_success_when_parkingCar_given_fullCapacity_in_first_parkingLot_and_park_to_the_second_parkLot() {
-        ParkingLot parkingLot1 = new ParkingLot();
-        ParkingLot parkingLot2 = new ParkingLot();
-        ParkingBoy parkingBoy = new ParkingBoy();
-        //given
+    public void should_park_car_success_when_parkingCar_given_fullCapacity_in_first_parkingLot_and_park_to_the_second_parkLot() {
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot1, parkingLot2);
+
         parkingLot1.setIsFull(true);
-        parkingBoy.setParkingLots(parkingLot1);
-        parkingBoy.setParkingLots(parkingLot2);
-        //when
         CarTicket carTicket = parkingBoy.parkCar(new Car());
-        //then
+        int parkingLot2Size = parkingLot2.getParkRecords().size();
+
+        assertNotNull(carTicket);
+        assertEquals(1, parkingLot2Size);
 
     }
 }

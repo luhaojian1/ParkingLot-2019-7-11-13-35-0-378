@@ -8,6 +8,7 @@ import com.thoughtworks.tdd.parklot.CarTicket;
 import com.thoughtworks.tdd.parklot.ParkingLot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,9 +24,9 @@ public class ParkingBoy {
         parkingLots.add(parkingLot);
     }
 
-    public ParkingBoy(List<ParkingLot> parkingLots) {
+    public ParkingBoy(ParkingLot... parkingLots) {
         this.parkingLots = new ArrayList<>();
-        this.parkingLots = parkingLots;
+        this.parkingLots.addAll(Arrays.asList(parkingLots));
     }
 
     public CarTicket parkCar(Car car) {

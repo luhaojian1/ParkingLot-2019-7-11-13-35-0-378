@@ -1,6 +1,8 @@
 package com.thoughtworks.tdd.person;
 
+import com.thoughtworks.tdd.exception.CarTicketMissingException;
 import com.thoughtworks.tdd.exception.NotEnoughPositionException;
+import com.thoughtworks.tdd.exception.UnrecognizedParkingTicketException;
 import com.thoughtworks.tdd.parklot.Car;
 import com.thoughtworks.tdd.parklot.CarTicket;
 import com.thoughtworks.tdd.parklot.ParkingLot;
@@ -34,10 +36,13 @@ public class Manager {
                 return targetParkingLot.parkCar(car);
             }
         }
-        return null;
+        throw new NotEnoughPositionException();
     }
 
     public Car takeCar(CarTicket carTicket) {
+        if (carTicket == null) {
+            throw new CarTicketMissingException();
+        }
         boolean isContainsCarTicket = parkers.stream().anyMatch(parker -> parker.isContainsCarTicket(carTicket));
         if (isContainsCarTicket) {
             Parker targetParker = parkers.stream().filter(parker -> parker.isContainsCarTicket(carTicket)).collect(Collectors.toList()).get(0);
@@ -49,16 +54,10 @@ public class Manager {
                 return targetParkingLot.takeCar(carTicket);
             }
         }
-        return null;
+        throw new UnrecognizedParkingTicketException();
     }
 
-    public List<Parker> getParkers() {
-        return parkers;
+    public void addParkingLot(ParkingLot parkingLot) {
+        parkingLots.add(parkingLot);
     }
-
-    public void setParkers(List<Parker> parkers) {
-        this.parkers = parkers;
-    }
-
-
 }

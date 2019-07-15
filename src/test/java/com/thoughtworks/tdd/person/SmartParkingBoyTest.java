@@ -6,6 +6,7 @@ import com.thoughtworks.tdd.parklot.ParkingLot;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class SmartParkingBoyTest {
 
@@ -14,7 +15,7 @@ public class SmartParkingBoyTest {
         ParkingLot parkingLot1 = new ParkingLot();
         ParkingLot parkingLot2 = new ParkingLot();
         ParkingLot parkingLot3 = new ParkingLot();
-        ParkingBoy parkingBoy = new SmartParkingBoy();
+        Parker parkingBoy = new SmartParkingBoy();
         //given
         for (int i = 0; i < 4; i++) {
             parkingLot1.parkCar(new Car());
@@ -26,10 +27,10 @@ public class SmartParkingBoyTest {
         parkingBoy.setParkingLots(parkingLot2);
         parkingBoy.setParkingLots(parkingLot3);
         //when
-        CarTicket carTicket = parkingBoy.parkingCar(new Car());
+        CarTicket carTicket = parkingBoy.parkCar(new Car());
         int parkingLot3Length = parkingLot3.getParkRecords().size();
         //then
-        assertEquals(carTicket.getParkCarMessage(), "park car success.");
+        assertNotNull(carTicket);
         assertEquals(parkingLot3Length, 5);
     }
 }

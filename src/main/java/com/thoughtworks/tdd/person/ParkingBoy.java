@@ -1,5 +1,6 @@
 package com.thoughtworks.tdd.person;
 
+import com.thoughtworks.tdd.exception.CarTicketMissingException;
 import com.thoughtworks.tdd.exception.UnrecognizedParkingTicketException;
 import com.thoughtworks.tdd.parklot.Car;
 import com.thoughtworks.tdd.parklot.CarTicket;
@@ -41,14 +42,17 @@ public class ParkingBoy {
 
 
     public Car takeCar(CarTicket carTicket) {
-        boolean isContainTicket = parkingLots.stream().anyMatch(parkingLot -> parkingLot.isContainsTicket(carTicket));
-        if (isContainTicket) {
-            ParkingLot targetParkingLot = parkingLots.stream()
-                    .filter(parkingLot -> parkingLot.isContainsTicket(carTicket)).collect(Collectors.toList()).get(0);
-            return targetParkingLot.takeCar(carTicket);
+        if (carTicket == null) {
+            throw new CarTicketMissingException();
+        } else {
+            boolean isContainTicket = parkingLots.stream().anyMatch(parkingLot -> parkingLot.isContainsTicket(carTicket));
+            if (isContainTicket) {
+                ParkingLot targetParkingLot = parkingLots.stream()
+                        .filter(parkingLot -> parkingLot.isContainsTicket(carTicket)).collect(Collectors.toList()).get(0);
+                return targetParkingLot.takeCar(carTicket);
+            }
         }
         throw new UnrecognizedParkingTicketException();
-
     }
 
     public List<ParkingLot> getParkingLots() {

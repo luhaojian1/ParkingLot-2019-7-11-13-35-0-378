@@ -1,5 +1,6 @@
 package com.thoughtworks.tdd.person;
 
+import com.thoughtworks.tdd.exception.CarTicketMissingException;
 import com.thoughtworks.tdd.exception.UnrecognizedParkingTicketException;
 import com.thoughtworks.tdd.parklot.Car;
 import com.thoughtworks.tdd.parklot.CarTicket;
@@ -24,15 +25,12 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void should_return_error_message_when_takeCar_given_no_carTicket() {
+    public void should_throw_CarTicketMissingException_when_takeCar_given_no_carTicket() {
         parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        //given
         CarTicket noCarTicket = null;
-        //when
-        Car car = parkingBoy.takeCar(noCarTicket);
-        //then
-        assertEquals(car.getCarMessage(), "Please provide your parking ticket.");
+
+        assertThrows(CarTicketMissingException.class, () -> parkingBoy.takeCar(noCarTicket));
     }
 
     @Test

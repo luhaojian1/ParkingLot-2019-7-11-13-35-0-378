@@ -79,7 +79,7 @@ public class ManagerTest {
     }
 
     @Test
-    public void should_return_error_message_when_pointParkingBoyToTakeCar_given_parkingCar_and_parkingBoy() {
+    public void should_return_error_message_when_pointParkingBoyToTakeCar_given_parkCar_and_parkingBoy() {
         Manager manager = new Manager();
         ParkingLot parkingLot1 = new ParkingLot(20);
         ParkingLot parkingLot2 = new ParkingLot(22);

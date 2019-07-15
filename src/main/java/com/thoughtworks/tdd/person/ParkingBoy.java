@@ -13,19 +13,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ParkingBoy {
-    private List<ParkingLot> parkingLots;
+    protected List<ParkingLot> parkingLots = new ArrayList<>();
 
     public ParkingBoy() {
-        this.parkingLots = new ArrayList<>();
     }
 
     public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot);
     }
 
     public ParkingBoy(ParkingLot... parkingLots) {
-        this.parkingLots = new ArrayList<>();
         this.parkingLots.addAll(Arrays.asList(parkingLots));
     }
 

@@ -6,30 +6,25 @@ import com.thoughtworks.tdd.parklot.ParkingLot;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class SmartParkingBoyTest {
 
     @Test
-    public void should_return_parkLot3_length_is_5_when_parkCar_given_3_parkLots() {
-        ParkingLot parkingLot1 = new ParkingLot();
-        ParkingLot parkingLot2 = new ParkingLot();
-        ParkingLot parkingLot3 = new ParkingLot();
-        ParkingBoy parkingBoy = new SmartParkingBoy();
+    public void should_park_car_in_parkingLot3_success_when_parkCar_given_3_parkLots() {
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(2);
+        ParkingLot parkingLot3 = new ParkingLot(3);
+        ParkingBoy parkingBoy = new SmartParkingBoy(parkingLot1, parkingLot2, parkingLot3);
         //given
-        for (int i = 0; i < 4; i++) {
-            parkingLot1.parkCar(new Car());
-            parkingLot3.parkCar(new Car());
-        }
+
         parkingLot2.setIsFull(true);
-        parkingLot1.parkCar(new Car());
-        parkingBoy.setParkingLots(parkingLot1);
-        parkingBoy.setParkingLots(parkingLot2);
-        parkingBoy.setParkingLots(parkingLot3);
+        parkingLot3.parkCar(new Car());
         //when
         CarTicket carTicket = parkingBoy.parkCar(new Car());
-        int parkingLot3Length = parkingLot3.getParkRecords().size();
+        int parkingLot3Size = parkingLot3.getParkRecords().size();
         //then
-
-        assertEquals(parkingLot3Length, 5);
+        assertNotNull(carTicket);
+        assertEquals(parkingLot3Size, 2);
     }
 }

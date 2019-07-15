@@ -29,12 +29,11 @@ public class ParkingBoy {
         for (ParkingLot parkingLot : parkingLots) {
             if (!parkingLot.isFull()) {
                 carTicket = parkingLot.parkCar(car);
-                carTicket.setParkCarMessage("park car success.");
+
                 return carTicket;
             }
         }
         carTicket = new CarTicket();
-        carTicket.setParkCarMessage("Not enough position.");
         return carTicket;
     }
 

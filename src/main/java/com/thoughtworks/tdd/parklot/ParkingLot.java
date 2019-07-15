@@ -32,11 +32,8 @@ public class ParkingLot implements Parkable {
     }
 
     public Car takeCar(CarTicket carTicket) {
-        boolean isValidCarTicket = parkRecords.containsKey(carTicket) && !carTicket.isUsed();
-        if (isValidCarTicket) {
-            Car car = parkRecords.get(carTicket);
-            parkRecords.remove(carTicket);
-            return car;
+        if (parkRecords.containsKey(carTicket)) {
+            return parkRecords.remove(carTicket);
         }
         return null;
     }

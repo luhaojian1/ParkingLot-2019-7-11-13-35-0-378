@@ -2,9 +2,6 @@ package com.thoughtworks.tdd.parklot;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -23,33 +20,19 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_3_carTickets_when_parkCar_given_3_cars() {
-        List<CarTicket> carTickets = new ArrayList<>();
+    public void should_take_2_cars_success_when_parkCar_and_takeCar() {
         parkingLot = new ParkingLot();
-        for (int i = 0; i < 3; i++) {
-            //given
-            Car car = new Car();
-            //when
-            carTickets.add(parkingLot.parkCar(car));
-        }
-        //then
-        assertEquals(carTickets.size(), 3);
-    }
 
-    @Test
-    public void should_return_2_cars_when_takeCar_given_2_carTickets() {
-        List<Car> cars = new ArrayList<>();
-        parkingLot = new ParkingLot();
-        //given
         Car car1 = new Car();
         Car car2 = new Car();
         CarTicket ticket1 = parkingLot.parkCar(car1);
         CarTicket ticket2 = parkingLot.parkCar(car2);
         //when
-        cars.add(parkingLot.takeCar(ticket1));
-        cars.add(parkingLot.takeCar(ticket2));
+        Car targetCar1 = parkingLot.takeCar(ticket1);
+        Car targetCar2 = parkingLot.takeCar(ticket2);
         //then
-        assertEquals(cars.size(), 2);
+        assertEquals(car1, targetCar1);
+        assertEquals(car2, targetCar2);
     }
 
     @Test
@@ -68,7 +51,7 @@ public class ParkingLotTest {
         parkingLot = new ParkingLot();
         //given
         CarTicket usedTicket = new CarTicket();
-        usedTicket.setUsed(true);
+
         //when
         Car errorTicketCar = parkingLot.takeCar(usedTicket);
         //then

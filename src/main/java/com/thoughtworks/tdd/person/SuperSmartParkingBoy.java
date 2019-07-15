@@ -26,10 +26,10 @@ public class SuperSmartParkingBoy extends ParkingBoy {
                 }
             }
             carTicket = targetParkingLot.parkCar(car);
-            carTicket.setParkCarMessage("park car success.");
+
             return carTicket;
         }
-        carTicket.setParkCarMessage("Not enough position.");
+
         return carTicket;
     }
 }

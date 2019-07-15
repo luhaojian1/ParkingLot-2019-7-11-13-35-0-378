@@ -28,7 +28,7 @@ public class SuperSmartParkingBoyTest {
         CarTicket carTicket = parkingBoy.parkingCar(new Car());
         int parkingLot1Length = parkingLot1.getParkRecords().size();
         //then
-        assertEquals(carTicket.getParkCarMessage(), "park car success.");
+
         assertEquals(parkingLot1Length, 6);
     }
 }

@@ -32,6 +32,22 @@ public class ManagerTest {
         assertEquals(targetCar, car);
 
     }
+
+    @Test
+    public void should_park_and_fetch_car_success_when_point_parker_to_parkCar_and_take_car_in_own_parking_lots() {
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+
+        Manager manager = new Manager(parkingLot1, parkingLot2);
+        parkingLot1.setIsFull(true);
+        Car car = new Car();
+
+        CarTicket carTicket = manager.parkCar(car);
+        Car targetCar = manager.takeCar(carTicket);
+
+        assertEquals(targetCar, car);
+
+    }
 /*
     @Test
     public void should_return_error_message_when_pointParkingBoyToParkCar_given_parkingCar_and_parkingBoy() {

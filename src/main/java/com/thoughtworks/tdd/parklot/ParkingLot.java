@@ -1,9 +1,11 @@
 package com.thoughtworks.tdd.parklot;
 
+import com.thoughtworks.tdd.person.Parkable;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParkingLot {
+public class ParkingLot implements Parkable {
 
     private final int capacity;
     private boolean isFull = false;
@@ -29,7 +31,7 @@ public class ParkingLot {
         return carTicket;
     }
 
-    public Car pickUpCar(CarTicket carTicket) {
+    public Car takeCar(CarTicket carTicket) {
         boolean isValidCarTicket = parkRecords.containsKey(carTicket) && !carTicket.isUsed();
         if (isValidCarTicket) {
             Car car = parkRecords.get(carTicket);

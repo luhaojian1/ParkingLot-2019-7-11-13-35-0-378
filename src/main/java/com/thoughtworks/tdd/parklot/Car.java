@@ -1,7 +1,7 @@
 package com.thoughtworks.tdd.parklot;
 
 public class Car {
-    private String carId;
+
     private String carMessage;
 
     public String getCarMessage() {

@@ -48,7 +48,7 @@ public class ParkingBoy {
         } else {
             for (ParkingLot parkingLot : parkingLots) {
                 if (parkingLot.getParkRecords().containsKey(carTicket)) {
-                    car = parkingLot.pickUpCar(carTicket);
+                    car = parkingLot.takeCar(carTicket);
                     car.setCarMessage("pick up car success.");
                     return car;
                 }

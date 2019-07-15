@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SmartParkingBoyTest {
 
     @Test
-    public void should_return_parkLot3_length_is_5_when_parkingCar_given_3_parkLots() {
+    public void should_return_parkLot3_length_is_5_when_parkCar_given_3_parkLots() {
         ParkingLot parkingLot1 = new ParkingLot();
         ParkingLot parkingLot2 = new ParkingLot();
         ParkingLot parkingLot3 = new ParkingLot();
@@ -26,7 +26,7 @@ public class SmartParkingBoyTest {
         parkingBoy.setParkingLots(parkingLot2);
         parkingBoy.setParkingLots(parkingLot3);
         //when
-        CarTicket carTicket = parkingBoy.parkingCar(new Car());
+        CarTicket carTicket = parkingBoy.parkCar(new Car());
         int parkingLot3Length = parkingLot3.getParkRecords().size();
         //then
 

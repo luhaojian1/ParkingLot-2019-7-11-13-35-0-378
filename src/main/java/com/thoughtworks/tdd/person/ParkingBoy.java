@@ -1,11 +1,13 @@
 package com.thoughtworks.tdd.person;
 
+import com.thoughtworks.tdd.exception.UnrecognizedParkingTicketException;
 import com.thoughtworks.tdd.parklot.Car;
 import com.thoughtworks.tdd.parklot.CarTicket;
 import com.thoughtworks.tdd.parklot.ParkingLot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ParkingBoy {
     private List<ParkingLot> parkingLots;
@@ -24,7 +26,7 @@ public class ParkingBoy {
         this.parkingLots = parkingLots;
     }
 
-    public CarTicket parkingCar(Car car) {
+    public CarTicket parkCar(Car car) {
         CarTicket carTicket;
         for (ParkingLot parkingLot : parkingLots) {
             if (!parkingLot.isParkingLotFull()) {
@@ -39,23 +41,14 @@ public class ParkingBoy {
 
 
     public Car takeCar(CarTicket carTicket) {
-        Car car;
-        if (carTicket == null) {
-            car = new Car();
-            car.setCarMessage("Please provide your parking ticket.");
-            return car;
-        } else {
-            for (ParkingLot parkingLot : parkingLots) {
-                if (parkingLot.getParkRecords().containsKey(carTicket)) {
-                    car = parkingLot.takeCar(carTicket);
-                    car.setCarMessage("pick up car success.");
-                    return car;
-                }
-            }
-            car = new Car();
-            car.setCarMessage("Unrecognized parking ticket.");
-            return car;
+        boolean isContainTicket = parkingLots.stream().anyMatch(parkingLot -> parkingLot.isContainsTicket(carTicket));
+        if (isContainTicket) {
+            ParkingLot targetParkingLot = parkingLots.stream()
+                    .filter(parkingLot -> parkingLot.isContainsTicket(carTicket)).collect(Collectors.toList()).get(0);
+            return targetParkingLot.takeCar(carTicket);
         }
+        throw new UnrecognizedParkingTicketException();
+
     }
 
     public List<ParkingLot> getParkingLots() {

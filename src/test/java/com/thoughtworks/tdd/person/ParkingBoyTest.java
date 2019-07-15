@@ -1,25 +1,26 @@
 package com.thoughtworks.tdd.person;
 
+import com.thoughtworks.tdd.exception.UnrecognizedParkingTicketException;
 import com.thoughtworks.tdd.parklot.Car;
 import com.thoughtworks.tdd.parklot.CarTicket;
 import com.thoughtworks.tdd.parklot.ParkingLot;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ParkingBoyTest {
     private ParkingLot parkingLot;
 
+
     @Test
-    public void should_return_error_message_when_takeCar_given_error_carTicket() {
+    public void should_throw_UnrecognizedParkingTicketException_when_takeCar_given_error_carTicket() {
         parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        //given
         CarTicket errorCarTicket = new CarTicket();
-        //when
-        Car car = parkingBoy.takeCar(errorCarTicket);
-        //then
-        assertEquals(car.getCarMessage(), "Unrecognized parking ticket.");
+
+        assertThrows(UnrecognizedParkingTicketException.class, () -> parkingBoy.takeCar(errorCarTicket));
+
     }
 
     @Test
@@ -40,10 +41,10 @@ public class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         //given
         for (int i = 0; i < 10; i++) {
-            parkingBoy.parkingCar(new Car());
+            parkingBoy.parkCar(new Car());
         }
         //when
-        CarTicket carTicket = parkingBoy.parkingCar(new Car());
+        CarTicket carTicket = parkingBoy.parkCar(new Car());
         //then
 
     }
@@ -58,7 +59,7 @@ public class ParkingBoyTest {
         parkingBoy.setParkingLots(parkingLot1);
         parkingBoy.setParkingLots(parkingLot2);
         //when
-        CarTicket carTicket = parkingBoy.parkingCar(new Car());
+        CarTicket carTicket = parkingBoy.parkCar(new Car());
         //then
 
     }

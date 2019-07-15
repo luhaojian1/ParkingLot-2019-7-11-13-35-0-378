@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class SuperSmartParkingBoy extends ParkingBoy {
     @Override
-    public CarTicket parkingCar(Car car) {
+    public CarTicket parkCar(Car car) {
         CarTicket carTicket = new CarTicket();
         ;
         List<ParkingLot> parkingLots = getParkingLots().stream()

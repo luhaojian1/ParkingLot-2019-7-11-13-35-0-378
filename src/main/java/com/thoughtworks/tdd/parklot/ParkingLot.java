@@ -54,7 +54,7 @@ public class ParkingLot implements Parkable {
         return capacity;
     }
 
-    public boolean isUsedTicked(CarTicket carTicket) {
+    public boolean isContainsTicket(CarTicket carTicket) {
         return parkRecords.containsKey(carTicket);
     }
 }

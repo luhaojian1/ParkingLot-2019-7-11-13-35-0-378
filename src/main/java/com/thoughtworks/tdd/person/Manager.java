@@ -13,7 +13,7 @@ public class Manager extends ParkingBoy {
         if (!parkingBoys.contains(parkingBoy)) {
             parkingBoys.add(parkingBoy);
         }
-        return parkingBoy.parkingCar(car);
+        return parkingBoy.parkCar(car);
     }
 
     public Car pointParkingBoyToTakeCar(CarTicket carTicket, ParkingBoy parkingBoy) {

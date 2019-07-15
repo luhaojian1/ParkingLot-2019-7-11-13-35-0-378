@@ -25,7 +25,7 @@ public class SuperSmartParkingBoyTest {
         parkingBoy.setParkingLots(parkingLot2);
         parkingBoy.setParkingLots(parkingLot3);
         //when
-        CarTicket carTicket = parkingBoy.parkingCar(new Car());
+        CarTicket carTicket = parkingBoy.parkCar(new Car());
         int parkingLot1Length = parkingLot1.getParkRecords().size();
         //then
 

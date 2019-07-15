@@ -99,8 +99,8 @@ public class ManagerTest {
         parkingLot1.setIsFull(true);
         CarTicket carTicket = new CarTicket();
         CarTicket smartBoyCarTicket = null;
-        CarTicket superSmartBoyCarTicket = superSmartParkingBoy.parkingCar(new Car());
-        CarTicket managerCarTicket = manager.parkingCar(new Car());
+        CarTicket superSmartBoyCarTicket = superSmartParkingBoy.parkCar(new Car());
+        CarTicket managerCarTicket = manager.parkCar(new Car());
         //when
         Car car = manager.pointParkingBoyToTakeCar(carTicket, parkingBoy);
         Car smartCar = manager.pointParkingBoyToTakeCar(smartBoyCarTicket, smartParkingBoy);

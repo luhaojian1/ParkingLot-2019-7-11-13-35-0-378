@@ -38,11 +38,10 @@ public class ParkingLotTest {
     @Test
     public void should_return_null_when_takeCar_given_error_carTicket() {
         parkingLot = new ParkingLot();
-        //given
         CarTicket errorTicket = new CarTicket();
-        //when
+
         Car errorTicketCar = parkingLot.takeCar(errorTicket);
-        //then
+
         assertNull(errorTicketCar);
     }
 

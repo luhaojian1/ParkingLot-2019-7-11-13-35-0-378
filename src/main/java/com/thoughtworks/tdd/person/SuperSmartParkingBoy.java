@@ -13,7 +13,7 @@ public class SuperSmartParkingBoy extends ParkingBoy {
         CarTicket carTicket = new CarTicket();
         ;
         List<ParkingLot> parkingLots = getParkingLots().stream()
-                .filter(falseParkingLot -> !falseParkingLot.isFull())
+                .filter(falseParkingLot -> !falseParkingLot.isParkingLotFull())
                 .collect(Collectors.toList());
         double availablePositionRate = 0;
         if (!parkingLots.isEmpty()) {

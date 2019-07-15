@@ -12,7 +12,7 @@ public class SmartParkingBoy extends ParkingBoy {
     public CarTicket parkingCar(Car car) {
         CarTicket carTicket = new CarTicket();
         List<ParkingLot> parkingLots = getParkingLots().stream()
-                .filter(falseParkingLot -> !falseParkingLot.isFull())
+                .filter(falseParkingLot -> !falseParkingLot.isParkingLotFull())
                 .collect(Collectors.toList());
         int maxLength = 0;
         if (!parkingLots.isEmpty()) {

@@ -27,7 +27,7 @@ public class ParkingBoy {
     public CarTicket parkingCar(Car car) {
         CarTicket carTicket;
         for (ParkingLot parkingLot : parkingLots) {
-            if (!parkingLot.isFull()) {
+            if (!parkingLot.isParkingLotFull()) {
                 carTicket = parkingLot.parkCar(car);
 
                 return carTicket;

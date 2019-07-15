@@ -38,7 +38,7 @@ public class ParkingLot implements Parkable {
         return null;
     }
 
-    public boolean isFull() {
+    public boolean isParkingLotFull() {
         return isFull;
     }
 
@@ -52,5 +52,9 @@ public class ParkingLot implements Parkable {
 
     public int getCapacity() {
         return capacity;
+    }
+
+    public boolean isUsedTicked(CarTicket carTicket) {
+        return parkRecords.containsKey(carTicket);
     }
 }

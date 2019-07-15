@@ -39,13 +39,13 @@ public class ManagerTest {
         CarTicket carTicket = manager.pointParkingBoyToParkCar(new Car(), parkingBoy);
         CarTicket smartBoyCarTicket = manager.pointParkingBoyToParkCar(new Car(), smartParkingBoy);
         CarTicket superSmartBoyCarTicket = manager.pointParkingBoyToParkCar(new Car(), superSmartParkingBoy);
-        int parkingLot1Length = parkingLot1.getParkRecords().size();
-        int parkingLot2Length = parkingLot2.getParkRecords().size();
-        int parkingLot3Length = parkingLot3.getParkRecords().size();
+        int parkingLot1Capacity = parkingLot1.getParkRecords().size();
+        int parkingLot2Capacity = parkingLot2.getParkRecords().size();
+        int parkingLot3Capacity = parkingLot3.getParkRecords().size();
         //then
-        assertEquals(parkingLot1Length, 0);
-        assertEquals(parkingLot2Length, 7);
-        assertEquals(parkingLot3Length, 5);
+        assertEquals(parkingLot1Capacity, 0);
+        assertEquals(parkingLot2Capacity, 7);
+        assertEquals(parkingLot3Capacity, 5);
 
     }
 

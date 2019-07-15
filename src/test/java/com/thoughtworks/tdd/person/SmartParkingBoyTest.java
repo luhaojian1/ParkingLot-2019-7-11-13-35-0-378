@@ -27,9 +27,9 @@ public class SmartParkingBoyTest {
         parkingBoy.setParkingLots(parkingLot3);
         //when
         CarTicket carTicket = parkingBoy.parkingCar(new Car());
-        int parkingLot3Length = parkingLot3.getParkRecords().size();
+        int parkingLot3Capacity = parkingLot3.getParkRecords().size();
         //then
         assertEquals(carTicket.getParkCarMessage(), "park car success.");
-        assertEquals(parkingLot3Length, 5);
+        assertEquals(parkingLot3Capacity, 5);
     }
 }

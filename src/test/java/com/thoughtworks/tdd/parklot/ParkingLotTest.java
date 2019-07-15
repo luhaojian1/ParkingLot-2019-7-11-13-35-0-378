@@ -50,24 +50,20 @@ public class ParkingLotTest {
         parkingLot = new ParkingLot();
         CarTicket carTicket = parkingLot.parkCar(new Car());
 
-        //when
         parkingLot.takeCar(carTicket);
         Car car2 = parkingLot.takeCar(carTicket);
-        //then
+
         assertNull(car2);
     }
 
     @Test
     public void should_return_null_when_parkCar_given_fullCapacity() {
-        parkingLot = new ParkingLot();
-        //given
-        for (int i = 0; i < 10; i++) {
-            parkingLot.parkCar(new Car());
-        }
-        //when
-        CarTicket ticket = parkingLot.parkCar(new Car());
-        //then
-        assertNull(ticket);
+        parkingLot = new ParkingLot(1);
+
+        parkingLot.parkCar(new Car());
+        CarTicket ticket1 = parkingLot.parkCar(new Car());
+
+        assertNull(ticket1);
     }
 
 

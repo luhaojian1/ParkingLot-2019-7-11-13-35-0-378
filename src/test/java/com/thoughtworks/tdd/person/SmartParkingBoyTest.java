@@ -15,13 +15,13 @@ public class SmartParkingBoyTest {
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(2);
         ParkingLot parkingLot3 = new ParkingLot(3);
-        ParkingBoy parkingBoy = new SmartParkingBoy(parkingLot1, parkingLot2, parkingLot3);
+        Parker smartParkingBoy = new SmartParkingBoy(parkingLot1, parkingLot2, parkingLot3);
         //given
 
         parkingLot2.setIsFull(true);
         parkingLot3.parkCar(new Car());
         //when
-        CarTicket carTicket = parkingBoy.parkCar(new Car());
+        CarTicket carTicket = smartParkingBoy.parkCar(new Car());
         int parkingLot3Size = parkingLot3.getParkRecords().size();
         //then
         assertNotNull(carTicket);

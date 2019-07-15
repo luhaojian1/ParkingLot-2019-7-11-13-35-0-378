@@ -14,7 +14,7 @@ public class SuperSmartParkingBoyTest {
         ParkingLot parkingLot1 = new ParkingLot(20);
         ParkingLot parkingLot2 = new ParkingLot(30);
         ParkingLot parkingLot3 = new ParkingLot();
-        ParkingBoy parkingBoy = new SuperSmartParkingBoy(parkingLot1, parkingLot2, parkingLot3);
+        Parker superSmartParkingBoy = new SuperSmartParkingBoy(parkingLot1, parkingLot2, parkingLot3);
         for (int i = 0; i < 4; i++) {
             parkingLot1.parkCar(new Car());
             parkingLot3.parkCar(new Car());
@@ -22,7 +22,7 @@ public class SuperSmartParkingBoyTest {
         parkingLot2.setIsFull(true);
         parkingLot1.parkCar(new Car());
 
-        CarTicket carTicket = parkingBoy.parkCar(new Car());
+        CarTicket carTicket = superSmartParkingBoy.parkCar(new Car());
         int parkingLot1Length = parkingLot1.getParkRecords().size();
 
         assertNotNull(carTicket);

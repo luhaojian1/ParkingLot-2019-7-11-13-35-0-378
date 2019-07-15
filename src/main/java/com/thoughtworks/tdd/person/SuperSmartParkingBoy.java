@@ -10,7 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SuperSmartParkingBoy extends ParkingBoy {
+public class SuperSmartParkingBoy extends Parker {
     public SuperSmartParkingBoy(ParkingLot... parkingLots) {
         super.parkingLots.addAll(Arrays.asList(parkingLots));
     }

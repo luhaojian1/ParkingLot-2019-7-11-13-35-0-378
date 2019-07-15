@@ -12,20 +12,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ParkingBoy {
-    protected List<ParkingLot> parkingLots = new ArrayList<>();
+public class ParkingBoy extends Parker {
 
-    public ParkingBoy() {
-    }
 
     public ParkingBoy(ParkingLot parkingLot) {
-        parkingLots.add(parkingLot);
+        super(parkingLot);
     }
-
     public ParkingBoy(ParkingLot... parkingLots) {
-        this.parkingLots.addAll(Arrays.asList(parkingLots));
+        super.parkingLots.addAll(Arrays.asList(parkingLots));
     }
-
     public CarTicket parkCar(Car car) {
         boolean isAllParkingLotFull = parkingLots.stream().allMatch(ParkingLot::isParkingLotFull);
         if (!isAllParkingLotFull) {
@@ -37,29 +32,4 @@ public class ParkingBoy {
     }
 
 
-    public Car takeCar(CarTicket carTicket) {
-        if (carTicket == null) {
-            throw new CarTicketMissingException();
-        } else {
-            boolean isContainTicket = parkingLots.stream().anyMatch(parkingLot -> parkingLot.isContainsTicket(carTicket));
-            if (isContainTicket) {
-                ParkingLot targetParkingLot = parkingLots.stream()
-                        .filter(parkingLot -> parkingLot.isContainsTicket(carTicket)).collect(Collectors.toList()).get(0);
-                return targetParkingLot.takeCar(carTicket);
-            }
-        }
-        throw new UnrecognizedParkingTicketException();
-    }
-
-    public List<ParkingLot> getParkingLots() {
-        return parkingLots;
-    }
-
-    public void setParkingLots(ParkingLot parkingLot) {
-        parkingLots.add(parkingLot);
-    }
-
-    public void addParkingLots(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
-    }
 }

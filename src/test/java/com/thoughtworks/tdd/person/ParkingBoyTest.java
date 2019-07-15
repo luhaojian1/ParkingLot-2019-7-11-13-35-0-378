@@ -36,7 +36,7 @@ public class ParkingBoyTest {
     @Test
     public void should_throw_NotEnoughPositionException_when_parkCar_given_fullCapacity() {
         parkingLot = new ParkingLot(1);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Parker parkingBoy = new ParkingBoy(parkingLot);
         parkingBoy.parkCar(new Car());
 
         assertThrows(NotEnoughPositionException.class, () -> parkingBoy.parkCar(new Car()));

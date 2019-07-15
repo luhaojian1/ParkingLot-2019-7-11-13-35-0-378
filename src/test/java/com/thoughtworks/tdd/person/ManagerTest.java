@@ -6,6 +6,7 @@ import com.thoughtworks.tdd.parklot.ParkingLot;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,42 +14,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ManagerTest {
 
     @Test
-    public void should_return_correct_parkLot_length_when_pointParkingBoyToParkCar_given_parkingCar_and_parkingBoy() {
-        Manager manager = new Manager();
+    public void should_park_and_fetch_car_success_when_point_parker_to_parkCar_and_take_car() {
         ParkingLot parkingLot1 = new ParkingLot(20);
         ParkingLot parkingLot2 = new ParkingLot(22);
         ParkingLot parkingLot3 = new ParkingLot(19);
-        ParkingBoy parkingBoy = new ParkingBoy();
-        ParkingBoy smartParkingBoy = new SmartParkingBoy();
-        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
-        List<ParkingLot> parkingLots = new ArrayList<>();
-        //given
-        for (int i = 0; i < 4; i++) {
-            parkingLot2.parkCar(new Car());
-            parkingLot3.parkCar(new Car());
-        }
+        Parker parkingBoy = new ParkingBoy(parkingLot1);
+        Parker smartParkingBoy = new SmartParkingBoy(parkingLot2);
+        Parker superSmartParkingBoy = new SuperSmartParkingBoy(parkingLot3);
+        Manager manager = new Manager(parkingBoy, smartParkingBoy, superSmartParkingBoy);
         parkingLot1.setIsFull(true);
         parkingLot2.parkCar(new Car());
-        parkingLots.add(parkingLot1);
-        parkingLots.add(parkingLot2);
-        parkingLots.add(parkingLot3);
-        parkingBoy.addParkingLots(parkingLots);
-        smartParkingBoy.addParkingLots(parkingLots);
-        superSmartParkingBoy.addParkingLots(parkingLots);
-        //when
-        CarTicket carTicket = manager.pointParkingBoyToParkCar(new Car(), parkingBoy);
-        CarTicket smartBoyCarTicket = manager.pointParkingBoyToParkCar(new Car(), smartParkingBoy);
-        CarTicket superSmartBoyCarTicket = manager.pointParkingBoyToParkCar(new Car(), superSmartParkingBoy);
-        int parkingLot1Length = parkingLot1.getParkRecords().size();
-        int parkingLot2Length = parkingLot2.getParkRecords().size();
-        int parkingLot3Length = parkingLot3.getParkRecords().size();
-        //then
-        assertEquals(parkingLot1Length, 0);
-        assertEquals(parkingLot2Length, 7);
-        assertEquals(parkingLot3Length, 5);
+        Car car = new Car();
+
+        CarTicket carTicket = manager.parkCar(car);
+        Car targetCar = manager.takeCar(carTicket);
+
+        assertEquals(targetCar, car);
 
     }
-
+/*
     @Test
     public void should_return_error_message_when_pointParkingBoyToParkCar_given_parkingCar_and_parkingBoy() {
         Manager manager = new Manager();
@@ -84,9 +68,9 @@ public class ManagerTest {
         ParkingLot parkingLot1 = new ParkingLot(20);
         ParkingLot parkingLot2 = new ParkingLot(22);
         ParkingLot parkingLot3 = new ParkingLot(19);
-        ParkingBoy parkingBoy = new ParkingBoy();
-        ParkingBoy smartParkingBoy = new SmartParkingBoy();
-        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        Parker parkingBoy = new ParkingBoy();
+        Parker smartParkingBoy = new SmartParkingBoy();
+        Parker superSmartParkingBoy = new SuperSmartParkingBoy();
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
@@ -113,6 +97,6 @@ public class ManagerTest {
         assertEquals(managerCar.getCarMessage(), "pick up car success.");
 
     }
-
+*/
 
 }

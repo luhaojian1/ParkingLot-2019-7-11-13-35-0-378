@@ -1,6 +1,7 @@
 package com.thoughtworks.tdd.person;
 
 import com.thoughtworks.tdd.exception.CarTicketMissingException;
+import com.thoughtworks.tdd.exception.NotEnoughPositionException;
 import com.thoughtworks.tdd.exception.UnrecognizedParkingTicketException;
 import com.thoughtworks.tdd.parklot.Car;
 import com.thoughtworks.tdd.parklot.CarTicket;
@@ -34,16 +35,12 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void should_return_error_message_when_parkingCar_given_fullCapacity() {
-        parkingLot = new ParkingLot();
+    public void should_throw_NotEnoughPositionException_when_parkCar_given_fullCapacity() {
+        parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        //given
-        for (int i = 0; i < 10; i++) {
-            parkingBoy.parkCar(new Car());
-        }
-        //when
         CarTicket carTicket = parkingBoy.parkCar(new Car());
-        //then
+
+        assertThrows(NotEnoughPositionException.class, () -> parkingBoy.parkCar(new Car()));
 
     }
 

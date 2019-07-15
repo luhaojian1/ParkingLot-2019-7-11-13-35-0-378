@@ -1,6 +1,7 @@
 package com.thoughtworks.tdd.person;
 
 import com.thoughtworks.tdd.exception.CarTicketMissingException;
+import com.thoughtworks.tdd.exception.NotEnoughPositionException;
 import com.thoughtworks.tdd.exception.UnrecognizedParkingTicketException;
 import com.thoughtworks.tdd.parklot.Car;
 import com.thoughtworks.tdd.parklot.CarTicket;
@@ -28,16 +29,13 @@ public class ParkingBoy {
     }
 
     public CarTicket parkCar(Car car) {
-        CarTicket carTicket;
-        for (ParkingLot parkingLot : parkingLots) {
-            if (!parkingLot.isParkingLotFull()) {
-                carTicket = parkingLot.parkCar(car);
-
-                return carTicket;
-            }
+        boolean isAllParkingLotFull = parkingLots.stream().allMatch(ParkingLot::isParkingLotFull);
+        if (!isAllParkingLotFull) {
+            ParkingLot targetParkingLot = parkingLots.stream()
+                    .filter(parkingLot -> !parkingLot.isParkingLotFull()).collect(Collectors.toList()).get(0);
+            return targetParkingLot.parkCar(car);
         }
-        carTicket = new CarTicket();
-        return carTicket;
+        throw new NotEnoughPositionException();
     }
 
 
